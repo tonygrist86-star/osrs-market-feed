@@ -184,7 +184,7 @@ def scan():
             rejected["provisional_low_volume"] += 1
             continue
 
-        budget = 1000000 if item_mode == "provisional" else 3000000
+        budget = 3000000
 
         qty = min(
             limit,
