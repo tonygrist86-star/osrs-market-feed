@@ -1,0 +1,48 @@
+name: OSRS Market Update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '10 * * * *'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: osrs-market-update
+  cancel-in-progress: false
+
+jobs:
+  update-market:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download market data
+        run: |
+          mkdir -p data
+
+          BASE="https://prices.runescape.wiki/api/v2/osrs"
+
+          for route in latest 5m 1h mapping; do
+            curl --fail --silent --show-error --retry 3 \
+              -A "OSRS Personal Market Analysis GitHub Feed" \
+              "$BASE/$route" \
+              -o "data/$route.json"
+
+            python -m json.tool "data/$route.json" > /dev/null
+          done
+
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > data/updated.txt
+
+      - name: Save market data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if ! git diff --cached --quiet; then
+            git commit -m "Update OSRS market data"
+            git push
+          fi
