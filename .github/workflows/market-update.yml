@@ -35,6 +35,9 @@ jobs:
           done
 
           date -u +"%Y-%m-%dT%H:%M:%SZ" > data/updated.txt
+      - name: Run full market scanner
+        run: python market_scan.py
+
 
       - name: Save market data
         run: |
