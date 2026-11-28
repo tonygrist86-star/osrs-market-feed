@@ -1,24 +1,24 @@
 {
-  "scanned_at": "2026-11-28T10:50:48.123309+00:00",
+  "scanned_at": "2026-11-28T10:55:48.090237+00:00",
   "validation": "provisional",
   "mapped_items_screened": 4682,
-  "items_evaluated": 418,
-  "qualified_opportunities": 71,
+  "items_evaluated": 394,
+  "qualified_opportunities": 78,
   "download_age_seconds": 0,
-  "five_min_timestamp": 1795862700,
+  "five_min_timestamp": 1795863000,
   "five_min_completed_age_seconds": 48,
   "hour_timestamp": 1795852800,
-  "hour_completed_age_seconds": 6648,
+  "hour_completed_age_seconds": 6948,
   "rejections": {
-    "stale_trades": 3819,
-    "provisional_low_volume": 181,
-    "no_net_profit": 156,
+    "stale_trades": 3854,
+    "missing_two_sided_volume": 238,
     "missing_latest": 152,
-    "missing_two_sided_volume": 262,
-    "inconsistent_spread": 20,
+    "provisional_low_volume": 166,
+    "no_net_profit": 136,
+    "unstable_buy_price": 8,
+    "inconsistent_spread": 27,
     "unknown_buy_limit": 8,
-    "unstable_buy_price": 5,
-    "unstable_sell_price": 6,
-    "no_spread": 2
+    "unstable_sell_price": 9,
+    "no_spread": 6
   }
 }
